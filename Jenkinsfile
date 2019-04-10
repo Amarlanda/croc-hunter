@@ -3,7 +3,10 @@
 // load pipeline functions
 // Requires pipeline-github-lib plugin to load library from github
 
-@Library('github.com/lachie83/jenkins-pipeline@dev')
+//#TODO:-fastjenkins-1-edited libary location
+//def libary_location = "github.com/lachie83/jenkins-pipeline@dev"
+def libary_location = "github.com/amarlanda/jenkins-pipeline@dev"
+@Library('libary_location')
 
 def pipeline = new io.estrado.Pipeline()
 
@@ -117,7 +120,7 @@ volumes:[
 
         // anchore image scanning configuration
         println "Add container image tags to anchore scanning list"
-        
+
         def tag = image_tags_list.get(0)
         def imageLine = "${config.container_repo.host}/${acct}/${config.container_repo.repo}:${tag}" + ' ' + env.WORKSPACE + '/Dockerfile'
         writeFile file: 'anchore_images', text: imageLine
@@ -178,7 +181,7 @@ volumes:[
               "ingress.hostname": config.app.hostname,
             ]
           )
-          
+
           //  Run helm tests
           if (config.app.test) {
             pipeline.helmTest(
