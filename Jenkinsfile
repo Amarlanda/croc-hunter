@@ -6,7 +6,7 @@
 //#TODO:-fastjenkins-1-edited libary location
 //def libary_location = "github.com/lachie83/jenkins-pipeline@dev"
 def libary_location = "github.com/amarlanda/jenkins-pipeline@dev"
-@Library('libary_location')
+@Library( libary_location )
 
 def pipeline = new io.estrado.Pipeline()
 
